@@ -1,0 +1,41 @@
+/*
+  * @author: Nicholis Wright
+  *This file is the css sheet to have a better design for the GUI.
+  *All of these are needed for styling but give errors
+  * */
+
+.root {
+  -fx-background-image: url("appBackground.jpg");
+  -fx-font-family: "Agency FB";
+  -fx-font-size: 15pt;
+  -tab-text-color: black;
+}
+
+/*noinspection ALL*/
+.button {
+  -fx-background-color: linear-gradient(#BBD2C5, #536976);
+  -fx-background-radius: 100;
+  -fx-border-radius: 100;
+  -fx-text-fill: black;
+  -fx-border-color: black;
+}
+
+
+.tab {
+  -fx-background-color: linear-gradient(#BBD2C5, #536976);
+  -fx-background-radius: 100;
+  -fx-border-radius: 100;
+  -fx-border-color: black;
+  -fx-text-fill: black;
+  -fx-focus-color: transparent;
+}
+
+
+.text-area {
+  -fx-background-color: antiquewhite;
+  -fx-background-radius: 0;
+}
+
+.tab-pane > .tab-header-area > .tab-header-background {
+  -fx-background-color: linear-gradient(#BBD2C5, #536976);
+}

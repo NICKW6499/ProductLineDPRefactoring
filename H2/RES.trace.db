@@ -1,0 +1,3 @@
+2019-09-30 18:01:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" not found; SQL statement:
+INSERT INTO PRODUCT(NAME,MANUFACTURER, TYPE) VALUES ( 'iPod', 'Apple', 'AUDIO') [42102-199]
