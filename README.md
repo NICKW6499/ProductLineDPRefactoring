@@ -9,7 +9,7 @@ This is a production tracker program intended for use by a factory that produces
 JavaDocs in IDE.
 
 ## Diagrams
-![](Capture.PNG)
+![](Capture(1).PNG)
 
 
 ## Getting Started
