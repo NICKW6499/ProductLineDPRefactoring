@@ -5,7 +5,7 @@ package nickw64;
  * */
 public class Product implements Item {
   private int id;
-  public ItemType type;
+  private ItemType type;
   private String manufacturer;
   private String name;
 
