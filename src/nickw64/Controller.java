@@ -72,13 +72,13 @@ public class Controller extends ProductionRecord {
   * */
 
   public void handleRecordProductionButton() {
-    int prodCount =  Integer.parseInt(String.valueOf(quantityCombo.getValue()));
+    int prodCount = Integer.parseInt(String.valueOf(quantityCombo.getValue()));
     Product newItem = produceView.getSelectionModel().getSelectedItem();
 
-    for (int num = 1; num <= prodCount; num++){
+    for (int num = 1; num <= prodCount; num++) {
       ProductionRecord newProds = new ProductionRecord(newItem, prodCount);
 
-      newProds.setProductID(getProductID()+1);
+      newProds.setProductID(getProductID() + 1);
       ProductionLog.appendText(newProds.toString() + "\n" + "\n");
 
       insertDB(newProds);
@@ -96,13 +96,12 @@ public class Controller extends ProductionRecord {
     String prodMan = txtMan.getText();
     ItemType prodType = (ItemType) choiceBox.getValue();
 
-    //Product mediaProduct = new Product(prodName,prodMan,prodType);
+    // Product mediaProduct = new Product(prodName,prodMan,prodType);
 
-    produceView.getItems().add(new Product(prodName,prodMan,prodType));
+    produceView.getItems().add(new Product(prodName, prodMan, prodType));
 
     productLine.add(new Product(prodName, prodMan, prodType));
     productView.setItems(productLine);
-
   }
 
   /*

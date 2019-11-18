@@ -46,15 +46,14 @@ public class ProductionRecord extends Product {
     for (int i = 0; i < count; i++) {
       setProdDate(new Date());
       this.productionNumber = getProductionNum() + i;
-      setProductID(product.getId()+ i);
+      setProductID(product.getId() + i);
 
       String idNumber = String.format("%05d", productID);
 
       this.serialNumber =
           product.getManufacturer().substring(0, 3) + product.getType().getCodes() + idNumber;
-      }
     }
-
+  }
 
   /*
    * Constructor for 4 parameters

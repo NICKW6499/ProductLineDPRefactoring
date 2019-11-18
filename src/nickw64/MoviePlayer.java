@@ -12,8 +12,8 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * This is the default constructor for MoviePlayer
    * @author: Nicholis Wright
    * */
-  MoviePlayer(){
-    setScreen(getScreen()) ;
+  MoviePlayer() {
+    setScreen(getScreen());
   }
 
   /*
