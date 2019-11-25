@@ -1,9 +1,12 @@
 package nickw64;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -125,6 +128,46 @@ public class Controller extends ProductionRecord {
       choiceBox.getItems().add(it);
     }
   }
+
+  public void loadProductList()throws SQLException {
+    final String jdbc_driver = "org.h2.Driver";
+    final String dbUrl = "jdbc:h2:./res/Production";
+    Connection conn;
+    Statement stmt;
+    String sql = "SELECT * FROM PRODUCT";
+    conn = DriverManager.getConnection(dbUrl);
+
+    // STEP 3: Execute a query
+    stmt = conn.createStatement();
+
+    ResultSet rs = stmt.executeQuery(sql);
+    while (rs.next()) {
+      // these lines correspond to the database table columns
+      String name = rs.getString(2);
+      String manuf = rs.getString(4);
+      String type = rs.getString(3);
+      ItemType prodType= ItemType.AUDIO;
+
+      if( type.equals("AUDIO")){
+         prodType = ItemType.AUDIO;
+      }
+      else if (type.equals("VISUAL")){
+        prodType = ItemType.VISUAL;
+      }
+      else if(type.equals("AUDIO_MOBILE")){
+        prodType = ItemType.AUDIO_MOBILE;
+      }
+      else if(type.equals("VIDEO_MOBILE")){
+        prodType = ItemType.VISUAL_MOBILE;
+      }
+
+
+      // create object
+      Product prodFromDB = new Product(name, manuf, prodType);
+      // save to observable list
+      productLine.add(prodFromDB);
+    }
+  }
   /*
    * method to insert new items into the database
    * @author: Nicholis Wright
@@ -179,10 +222,20 @@ public class Controller extends ProductionRecord {
   public void insertDB() {
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
-
+    final String USER = "";
+    String PASS = "";
     // data base credentials
     Connection conn;
     Statement stmt;
+
+    try{
+      Properties prop = new Properties();
+      prop.load(new FileInputStream("res/properties"));
+      PASS = prop.getProperty("Password");
+    }
+    catch (Exception ex){
+      System.out.println(ex);
+    }
 
     try {
       // STEP 1: Register JDBC driver
