@@ -18,7 +18,7 @@ public class Main extends Application {
   /**
    *This method creates the scene.
    * @author: Nicholis Wright
-   *@param Stage primary stage: sets scene.
+   *@param  primaryStage: sets scene.
    * */
 
   @Override
@@ -30,9 +30,7 @@ public class Main extends Application {
   }
 
   /**
-   * @author: Nicholis Wright
-   *@param String[args]: main array that holds commands
-   * */
+   * @author: Nicholis Wright */
 
   public static void main(String[] args) {
     // 1a

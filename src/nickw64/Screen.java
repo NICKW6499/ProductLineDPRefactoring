@@ -12,9 +12,9 @@ public class Screen implements ScreenSpec {
   /**
    * 3 parameter constructor to build a screen
    * @author: Nicholis Wright
-   * @param String resolution: resolution of screen
-   * @param int refreshRate: refresh rate of screen
-   * @param int responseTime: response time of screen
+   * @param  resolution: resolution of screen
+   * @param  refreshRate: refresh rate of screen
+   * @param  responseTime: response time of screen
    * */
   public Screen(String resolution, int refreshRate, int responseTime) {
     setResolution(resolution);
@@ -52,7 +52,7 @@ public class Screen implements ScreenSpec {
   /**
    * Set refresh rate.
    * @author: Nicholis Wright
-   * @param int refreshRate: assigns passed value to refreshRate
+   * @param  refreshRate: assigns passed value to refreshRate
    * */
   public void setRefreshRate(int refreshRate) {
     this.refreshRate = refreshRate;
@@ -61,7 +61,6 @@ public class Screen implements ScreenSpec {
   /**
    * This method returns the response time of a screen
    * @author: Nicholis Wright
-   * @param int responseTime: response time value of screen
    * */
   public int getResponseTime() {
     return responseTime;

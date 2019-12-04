@@ -109,7 +109,7 @@ public class Product implements Item {
   /***
    * This method sets the item type
    * @author: Nicholis Wright
-   * @param ItemType type: assigns the passed info to the new type.
+   * @param  type: assigns the passed info to the new type.
    * */
   public void setType(ItemType type) {
     this.type = type;

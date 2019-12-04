@@ -29,7 +29,7 @@ public class ProductionRecord extends Product {
   /**
    *constructor using a product id
    * @author: Nicholis Wright
-   * @param int productID: used to get info of a specific product
+   * @param  productID: used to get info of a specific product
    * */
   public ProductionRecord(int productID) {
     setProductID(productID);
@@ -100,7 +100,7 @@ public class ProductionRecord extends Product {
   /**
    * assign a value to dateProduced
    * @author: Nicholis Wright
-   * @param Date date: passes in current date
+   * @param  date: passes in current date
    * */
   public void setProdDate(Date date) {
     this.dateProduced = date;
@@ -109,7 +109,7 @@ public class ProductionRecord extends Product {
   /**
    * assign value to serialNumber
    * @author: Nicholis Wright
-   * @param String serialNumber: passes in serialNumber for class var.
+   * @param  s: passes in serialNumber for class var.
    * */
   public void setSerialNum(String s) {
     this.serialNumber = s;
@@ -127,7 +127,7 @@ public class ProductionRecord extends Product {
   /**
    * assign value to productID
    * @author: Nicholis Wright
-   * @param int productID: assigns argument to productID var.
+   * @param  productID: assigns argument to productID var.
    * */
   public void setProductID(int productID) {
     this.productID = productID;
@@ -154,7 +154,7 @@ public class ProductionRecord extends Product {
   /**
    * assign production number
    * @author: Nicholis Wright
-   * @param int productionNumber: assign parameter to class var.
+   * @param  i: assign parameter to class var.
    * */
   public void setProductionNum(int i) {
     this.productionNumber = i;

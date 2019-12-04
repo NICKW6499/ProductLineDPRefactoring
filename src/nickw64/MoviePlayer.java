@@ -19,10 +19,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
   /**
    * This is a 4 parameter constructor for MoviePlayer
    * @author: Nicholis Wright
-   * @param String name: product name
-   * @param String manufacturer: manufacturer name
-   * @param Screen screen: screen object
-   * @param MonitorType monitorType: type of monitor
+   * @param  screen: screen object
    * */
   MoviePlayer(Screen screen) {
     super("DBPOWER MK101", "OracleProduction", ItemType.VISUAL);
@@ -88,7 +85,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
   /**
    * This method assigns a passed in value to screen
    * @author: Nicholis Wright
-   * @param Screen screen: assigns parameter value to screen
+   * @param  screen: assigns parameter value to screen
    * */
   private void setScreen(Screen screen) {
     this.screen = screen;
@@ -106,7 +103,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
   /**
    * This sets a passed in value to monitorType
    * @author: Nicholis Wright
-   * @param MonitorType monitorType: type of monitor
+   * @param  monitorType: type of monitor
    * */
   private void setMonitorType(MonitorType monitorType) {
     this.monitorType = monitorType;

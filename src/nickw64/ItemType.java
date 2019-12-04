@@ -15,7 +15,7 @@ public enum ItemType {
   /**
    * Constructor turns item type into a string var.
    * @author: Nicholis Wright
-   * @param String c: assigns c to class var.
+   * @param  c: assigns c to class var.
    * */
   ItemType(String c) {
     codes = c;
