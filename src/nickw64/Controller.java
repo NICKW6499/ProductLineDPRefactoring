@@ -20,7 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/*
+/**
  * This is the controller file which controls the program.
  * @author: Nicholis Wright
  * */
@@ -42,18 +42,16 @@ public class Controller extends ProductionRecord {
   @FXML private TableColumn<?, ?> colManName;
   @FXML private TableColumn<?, ?> colProdType;
 
-  /*
+  /**
   *@author: Nicholis Wright
   *@param ActionEvent actionEvent: this param passes in the action taking place on the
   product add button
   * */
 
-  /*
+  /**
   * This method calls the setupProductLineTable to insert items in the table
   * and also calls insertDB() to insert into database
   * @author: Nicholis Wright
-  *@param ActionEvent actionEvent: this param passes in the action taking place on the
-  product add button
   * */
   public void handleProductAddButton() {
     System.out.println("hopefully this works");
@@ -68,10 +66,8 @@ public class Controller extends ProductionRecord {
     insertDB();
   }
 
-  /*
+  /**
   * @author: Nicholis Wright
-  *@param ActionEvent actionEvent: this param passes in the action taking place on the
-  record product button
   * */
 
   public void handleRecordProductionButton() {
@@ -82,13 +78,13 @@ public class Controller extends ProductionRecord {
       ProductionRecord newProds = new ProductionRecord(newItem, prodCount);
 
       newProds.setProductID(getProductID() + 1);
-      ProductionLog.appendText(newProds.toString() + "\n" + "\n");
+      ProductionLog.appendText(newProds.toString() + "\n");
 
       insertDB(newProds);
     }
   }
 
-  /*
+  /**
    * this method inserts new products to a table view on production log page
    * @author: Nicholis Wright
    * @param
@@ -107,11 +103,10 @@ public class Controller extends ProductionRecord {
     productView.setItems(productLine);
   }
 
-  /*
+  /**
    * @author: Nicholis Wright
    *This method populates the combo box with decimal numbers 1-10
    * also sets up cell factory for observable list and tableview.
-   * @param none: no parameters
    * */
   public void initialize() {
     productLine = FXCollections.observableArrayList();
@@ -168,7 +163,7 @@ public class Controller extends ProductionRecord {
       productLine.add(prodFromDB);
     }
   }
-  /*
+  /**
    * method to insert new items into the database
    * @author: Nicholis Wright
    * @param:none
@@ -186,14 +181,14 @@ public class Controller extends ProductionRecord {
       Class.forName(jdbc_driver);
 
       // STEP 2: Open a connection
-      conn = DriverManager.getConnection(dbUrl);
+      conn = DriverManager.getConnection(dbUrl, "", "dbpw");
 
       // STEP 3: Execute a query
       stmt = conn.createStatement();
 
-      String prodName = txtName.getText();
-      String prodMan = txtMan.getText();
-      ItemType prodType = (ItemType) choiceBox.getValue();
+      String prodName = newItem.getName();
+      String prodMan = newItem.getManufacturer();
+      ItemType prodType = newItem.getType();
       Widget newProduct = new Widget(prodName, prodMan, prodType);
 
       // this inserts the name, manufacturer, and type into product of the database
@@ -242,7 +237,7 @@ public class Controller extends ProductionRecord {
       Class.forName(jdbc_driver);
 
       // STEP 2: Open a connection
-      conn = DriverManager.getConnection(dbUrl);
+      conn = DriverManager.getConnection(dbUrl, "","dbpw");
 
       // STEP 3: Execute a query
       stmt = conn.createStatement();

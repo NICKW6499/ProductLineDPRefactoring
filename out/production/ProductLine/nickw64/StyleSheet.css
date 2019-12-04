@@ -1,4 +1,4 @@
-/*
+/**
   * @author: Nicholis Wright
   *This file is the css sheet to have a better design for the GUI.
   *All of these are needed for styling but give errors
@@ -11,7 +11,7 @@
   -tab-text-color: black;
 }
 
-/*noinspection ALL*/
+/**noinspection ALL*/
 .button {
   -fx-background-color: linear-gradient(#BBD2C5, #536976);
   -fx-background-radius: 100;

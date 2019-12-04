@@ -1,6 +1,6 @@
 package nickw64;
 
-/*
+/**
  * This class constructs audioplayers.
  * @author: Nicholis Wright
  * @param
@@ -10,7 +10,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   private static String supportedAudioFormats;
   private static String supportedPlaylistFormats;
 
-  /*
+  /**
    * Method to print playing.
    * @author: Nicholis Wright
    * */
@@ -18,7 +18,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     System.out.println("Playing");
   }
 
-  /*
+  /**
    * Method to print stopping.
    * @author: Nicholis Wright
    * */
@@ -26,7 +26,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     System.out.println("Stopping");
   }
 
-  /*
+  /**
    * Method to print previous.
    * @author: Nicholis Wright
    * */
@@ -34,7 +34,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     System.out.println("Previous");
   }
 
-  /*
+  /**
    * Method to print next
    * @author: Nicholis Wright
    * */
@@ -42,7 +42,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     System.out.println("Next");
   }
 
-  /*
+  /**
    * Default constructor for audio players.
    * @author: Nicholis Wright
    * */
@@ -51,13 +51,10 @@ public class AudioPlayer extends Product implements MultimediaControl {
     setSupportedPlaylistFormats();
   }
 
-  /*
+  /**
    * 4 parameter constructor for audio players.
    * @author: Nicholis Wright
-   * @param String manufacturer: passes in the manuf. name
-   * @param String name: product name
-   * @param String supportedAudioFormat: supported audio formats
-   * @param String supportedPlaylistFormat: supported playlist formats
+   * @param supportedPlaylistFormat supportedPlaylistFormat: supported playlist formats
    * */
   AudioPlayer(@SuppressWarnings("SameParameterValue") String supportedPlaylistFormat) {
     super("DP-X1A", "Onkyo", ItemType.AUDIO);
@@ -65,7 +62,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     AudioPlayer.supportedPlaylistFormats = supportedPlaylistFormat;
   }
 
-  /*
+  /**
    * accessor for supported audio formats var.
    * @author: Nicholis Wright
    * */
@@ -73,16 +70,15 @@ public class AudioPlayer extends Product implements MultimediaControl {
     return supportedAudioFormats;
   }
 
-  /*
+  /**
    * This is the mutator method for audio formats.
    * @author: Nicholis Wright
-   * @param String supportedAudioFormat: passes in the format.
    * */
   private void setSupportedAudioFormats() {
     AudioPlayer.supportedAudioFormats = "unknown";
   }
 
-  /*
+  /**
    * This is accessor for playlist formats variable.
    * @author: Nicholis Wright
    * */
@@ -90,7 +86,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     return supportedPlaylistFormats;
   }
 
-  /*
+  /**
    * This is the mutator for the playlist formats var.
    * @author: Nicholis Wright
    * @param
@@ -99,7 +95,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     AudioPlayer.supportedPlaylistFormats = "unknown";
   }
 
-  /*
+  /**
    * toString method to compile an object statement.
    * @author: Nicholis Wright
    * @param

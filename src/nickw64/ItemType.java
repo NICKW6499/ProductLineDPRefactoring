@@ -1,6 +1,6 @@
 package nickw64;
 
-/*
+/**
  * Class ItemType is an enum for the type of a product.
  * @author: Nicholis Wright
  * */
@@ -12,7 +12,7 @@ public enum ItemType {
 
   private final String codes;
 
-  /*
+  /**
    * Constructor turns item type into a string var.
    * @author: Nicholis Wright
    * @param String c: assigns c to class var.
@@ -21,7 +21,7 @@ public enum ItemType {
     codes = c;
   }
 
-  /*
+  /**
    * getCodes method returns item codes.
    * @author: Nicholis Wright
    * @return codes: represents item code

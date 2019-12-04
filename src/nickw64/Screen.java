@@ -1,6 +1,6 @@
 package nickw64;
 
-/*
+/**
  * Class screen builds a screen object
  * @author: Nicholis Wright
  * */
@@ -9,7 +9,7 @@ public class Screen implements ScreenSpec {
   private int refreshRate;
   private int responseTime;
 
-  /*
+  /**
    * 3 parameter constructor to build a screen
    * @author: Nicholis Wright
    * @param String resolution: resolution of screen
@@ -22,7 +22,7 @@ public class Screen implements ScreenSpec {
     setResponseTime(responseTime);
   }
 
-  /*
+  /**
    * This returns the resolution
    * @author: Nicholis Wright
    * @return resolution: returns resolution of screen
@@ -31,7 +31,7 @@ public class Screen implements ScreenSpec {
     return resolution;
   }
 
-  /*
+  /**
    *This method assigns the resolution of a screen
    * @author: Nicholis Wright
    * @param resolution: assigns resolution value
@@ -40,7 +40,7 @@ public class Screen implements ScreenSpec {
     this.resolution = resolution;
   }
 
-  /*
+  /**
    * This method returns the refreshRate
    * @author: Nicholis Wright
    * @return refreshRate: returns refresh rate value
@@ -49,7 +49,7 @@ public class Screen implements ScreenSpec {
     return refreshRate;
   }
 
-  /*
+  /**
    * Set refresh rate.
    * @author: Nicholis Wright
    * @param int refreshRate: assigns passed value to refreshRate
@@ -58,7 +58,7 @@ public class Screen implements ScreenSpec {
     this.refreshRate = refreshRate;
   }
 
-  /*
+  /**
    * This method returns the response time of a screen
    * @author: Nicholis Wright
    * @param int responseTime: response time value of screen
@@ -67,7 +67,7 @@ public class Screen implements ScreenSpec {
     return responseTime;
   }
 
-  /*
+  /**
    * Sets the response time of a screen to responseTime
    * @author: Nicholis Wright
    * @param responseTime: assigns parameter value to class attribute.
@@ -76,7 +76,7 @@ public class Screen implements ScreenSpec {
     this.responseTime = responseTime;
   }
 
-  /*
+  /**
    * toString method compiles an item statement about the screen.
    * @author: Nicholis Wright
    * */
