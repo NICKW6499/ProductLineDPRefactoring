@@ -50,9 +50,12 @@ public class ProductionRecord extends Product {
       setProductID(product.getId() + i);
 
       String idNumber = String.format("%05d", productID);
-
-      this.serialNumber =
-          product.getManufacturer().substring(0, 3) + product.getType().getCodes() + idNumber;
+      try {
+        this.serialNumber =
+            product.getManufacturer().substring(0, 3) + product.getType().getCodes() + idNumber;
+      } catch (StringIndexOutOfBoundsException e) {
+        System.out.println("Invalid object");
+      }
     }
   }
 

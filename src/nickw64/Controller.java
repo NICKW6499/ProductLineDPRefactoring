@@ -57,28 +57,41 @@ public class Controller extends ProductionRecord {
   public void handleProductAddButton() throws SQLException {
     System.out.println("hopefully this works");
     setupProductLineTable();
+
     String prodName = txtName.getText();
     String prodMan = txtMan.getText();
     ItemType prodType = (ItemType) choiceBox.getValue();
-    Product newProduct = new Product(prodName, prodMan, prodType);
+    String test = "";
+    if (txtName.getText().equals(test) || txtMan.getText().equals(test) || prodType == null) {
+      System.out.println("Please fill in the item name, manufacture and type!");
 
-    ProductionLog.appendText(super.toString() + "\n");
-    insertDB();
-    loadProductList();
+    } else {
+      Product newProduct = new Product(prodName, prodMan, prodType);
+
+      ProductionLog.appendText(super.toString() + "\n");
+
+      insertDB(newProduct);
+    }
   }
 
   /** @author: Nicholis Wright */
   public void handleRecordProductionButton() {
-    int prodCount = Integer.parseInt(String.valueOf(quantityCombo.getValue()));
-    Product newItem = produceView.getSelectionModel().getSelectedItem();
+    try {
+      int prodCount = Integer.parseInt(String.valueOf(quantityCombo.getValue()));
+      Product newItem = produceView.getSelectionModel().getSelectedItem();
 
-    for (int num = 1; num <= prodCount; num++) {
-      ProductionRecord newProds = new ProductionRecord(newItem, num);
+      for (int num = 1; num <= prodCount; num++) {
+        ProductionRecord newProds = new ProductionRecord(newItem, num);
 
-      newProds.setProductID(getProductID() + 1);
-      ProductionLog.appendText(newProds.toString() + "\n");
+        newProds.setProductID(getProductID() + 1);
+        ProductionLog.appendText(newProds.toString() + "\n");
 
-      insertDB(newItem);
+        insertDB(newItem);
+      }
+    } catch (NullPointerException ex) {
+      System.out.println("Select a product to produce");
+    } catch (NumberFormatException ex) {
+      System.out.println("Select a quantity to produce");
     }
   }
 
@@ -119,7 +132,7 @@ public class Controller extends ProductionRecord {
       System.out.println("Failed to establish table");
     }
 
-    for (int i = 0; i <= 10; i++) {
+    for (int i = 1; i <= 10; i++) {
       quantityCombo.getItems().add(i);
     }
     quantityCombo.getSelectionModel().selectFirst();
@@ -169,9 +182,18 @@ public class Controller extends ProductionRecord {
 
       // create object
       Product prodFromDB = new Product(name, manuf, prodType);
+      ProductionRecord newRec = new ProductionRecord(prodFromDB, 1);
       // save to observable list
       productLine.add(prodFromDB);
+      produceView.getItems().add(new Product(name, manuf, prodType));
+      try {
+        ProductionLog.appendText(String.valueOf(newRec));
+      } catch (StringIndexOutOfBoundsException e) {
+        System.out.println("Object missing fields");
+      }
     }
+    conn.close();
+    stmt.close();
   }
   /**
    * Method to insert new items into the database.
@@ -252,7 +274,7 @@ public class Controller extends ProductionRecord {
       Class.forName(jdbc_driver);
 
       // STEP 2: Open a connection
-      conn = DriverManager.getConnection(dbUrl, "", "dbpw");
+      conn = DriverManager.getConnection(dbUrl, "", PASS);
 
       // STEP 3: Execute a query
       stmt = conn.createStatement();

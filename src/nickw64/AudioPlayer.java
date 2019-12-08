@@ -60,7 +60,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * Method to print next
+   * Method to print next.
    *
    * @author: Nicholis Wright
    */
@@ -73,7 +73,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
    *
    * @author: Nicholis Wright
    */
-  private String getSupportedAudioFormats() {
+  public String getSupportedAudioFormats() {
     return supportedAudioFormats;
   }
 
@@ -82,8 +82,8 @@ public class AudioPlayer extends Product implements MultimediaControl {
    *
    * @author: Nicholis Wright
    */
-  private void setSupportedAudioFormats() {
-    AudioPlayer.supportedAudioFormats = "unknown";
+  public void setSupportedAudioFormats() {
+    supportedAudioFormats = "unknown";
   }
 
   /**
@@ -91,7 +91,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
    *
    * @author: Nicholis Wright
    */
-  private String getSupportedPlaylistFormats() {
+  public String getSupportedPlaylistFormats() {
     return supportedPlaylistFormats;
   }
 
@@ -99,10 +99,9 @@ public class AudioPlayer extends Product implements MultimediaControl {
    * This is the mutator for the playlist formats var.
    *
    * @author: Nicholis Wright
-   * @param
    */
-  private void setSupportedPlaylistFormats() {
-    AudioPlayer.supportedPlaylistFormats = "unknown";
+  public void setSupportedPlaylistFormats() {
+    supportedPlaylistFormats = "unknown";
   }
 
   /**
