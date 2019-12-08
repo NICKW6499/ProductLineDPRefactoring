@@ -23,8 +23,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * This is the controller file which controls the program.
+ *
  * @author: Nicholis Wright
- * */
+ */
 // error says it can be package private but it cannot
 @SuppressWarnings("WeakerAccess")
 public class Controller extends ProductionRecord {
@@ -48,10 +49,11 @@ public class Controller extends ProductionRecord {
   @FXML private TableColumn<?, ?> colProdType;
 
   /**
-  * This method calls the setupProductLineTable to insert items in the table
-  * and also calls insertDB() to insert into database
-  * @author: Nicholis Wright
-  * */
+   * This method calls the setupProductLineTable to insert items in the table and also calls
+   * insertDB() to insert into database
+   *
+   * @author: Nicholis Wright
+   */
   public void handleProductAddButton() throws SQLException {
     System.out.println("hopefully this works");
     setupProductLineTable();
@@ -63,13 +65,9 @@ public class Controller extends ProductionRecord {
     ProductionLog.appendText(super.toString() + "\n");
     insertDB();
     loadProductList();
-
   }
 
-  /**
-  * @author: Nicholis Wright
-  * */
-
+  /** @author: Nicholis Wright */
   public void handleRecordProductionButton() {
     int prodCount = Integer.parseInt(String.valueOf(quantityCombo.getValue()));
     Product newItem = produceView.getSelectionModel().getSelectedItem();
@@ -86,9 +84,10 @@ public class Controller extends ProductionRecord {
 
   /**
    * this method inserts new products to a table view on production log page
+   *
    * @author: Nicholis Wright
    * @param
-   * */
+   */
   private void setupProductLineTable() {
 
     String prodName = txtName.getText();
@@ -104,24 +103,21 @@ public class Controller extends ProductionRecord {
   }
 
   /**
-   * @author: Nicholis Wright
-   *This method populates the combo box with decimal numbers 1-10
-   * also sets up cell factory for observable list and tableview.
-   * */
+   * @author: Nicholis Wright This method populates the combo box with decimal numbers 1-10 also
+   *     sets up cell factory for observable list and tableview.
+   */
   public void initialize() throws SQLException {
 
     productLine = FXCollections.observableArrayList();
 
     setupProductLineTable();
-try{
-    colProdName.setCellValueFactory(new PropertyValueFactory("Name"));
-    colManName.setCellValueFactory(new PropertyValueFactory("Manufacturer"));
-    colProdType.setCellValueFactory(new PropertyValueFactory("Type"));
-}
-catch(Exception ex){
+    try {
+      colProdName.setCellValueFactory(new PropertyValueFactory("Name"));
+      colManName.setCellValueFactory(new PropertyValueFactory("Manufacturer"));
+      colProdType.setCellValueFactory(new PropertyValueFactory("Type"));
+    } catch (Exception ex) {
       System.out.println("Failed to establish table");
-}
-
+    }
 
     for (int i = 0; i <= 10; i++) {
       quantityCombo.getItems().add(i);
@@ -136,6 +132,7 @@ catch(Exception ex){
 
   /**
    * This method loads a list of products in the database.
+   *
    * @author: Nicholis Wright
    * @throws SQLException catches database errors
    */
@@ -148,28 +145,25 @@ catch(Exception ex){
     Statement stmt;
 
     String sql = "SELECT * FROM PRODUCT";
-    conn = DriverManager.getConnection(dbUrl, "","dbpw");
+    conn = DriverManager.getConnection(dbUrl, "", "dbpw");
 
     // STEP 3: Execute a query
     stmt = conn.createStatement();
 
     ResultSet rs = stmt.executeQuery(sql);
-    while (rs.next()) {                                         //retrieves items from DB
+    while (rs.next()) { // retrieves items from DB
       // these lines correspond to the database table columns
       String name = rs.getString(2);
       String manuf = rs.getString(4);
       String type = rs.getString(3);
-      ItemType prodType= ItemType.AUDIO;
+      ItemType prodType = ItemType.AUDIO;
 
-      if( type.equals("AUDIO")){              //if statements to set the type of object based on DB
-      }
-      else if (type.equals("VISUAL")){
+      if (type.equals("AUDIO")) { // if statements to set the type of object based on DB
+      } else if (type.equals("VISUAL")) {
         prodType = ItemType.VISUAL;
-      }
-      else if(type.equals("AUDIO_MOBILE")){
+      } else if (type.equals("AUDIO_MOBILE")) {
         prodType = ItemType.AUDIO_MOBILE;
-      }
-      else if(type.equals("VIDEO_MOBILE")){
+      } else if (type.equals("VIDEO_MOBILE")) {
         prodType = ItemType.VISUAL_MOBILE;
       }
 
@@ -181,10 +175,11 @@ catch(Exception ex){
   }
   /**
    * Method to insert new items into the database.
+   *
    * @author: Nicholis Wright
    * @param newItem : this is the item passed in from the ProductionRecord(product, count) const.
-   * */
-  public void insertDB(Product newItem) {             //used to enter ProductionRecord Items looped
+   */
+  public void insertDB(Product newItem) { // used to enter ProductionRecord Items looped
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
 
@@ -230,11 +225,11 @@ catch(Exception ex){
     }
   }
 
-
   /**
    * Method to insert new items into the database.
+   *
    * @author: Nicholis Wright
-   * */
+   */
   public void insertDB() {
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
@@ -244,12 +239,11 @@ catch(Exception ex){
     Connection conn;
     Statement stmt;
 
-    try{
+    try {
       Properties prop = new Properties();
       prop.load(new FileInputStream("res/properties"));
       PASS = prop.getProperty("Password");
-    }
-    catch (Exception ex){
+    } catch (Exception ex) {
       System.out.println("failed to retrieve password");
     }
 
@@ -258,7 +252,7 @@ catch(Exception ex){
       Class.forName(jdbc_driver);
 
       // STEP 2: Open a connection
-      conn = DriverManager.getConnection(dbUrl, "","dbpw");
+      conn = DriverManager.getConnection(dbUrl, "", "dbpw");
 
       // STEP 3: Execute a query
       stmt = conn.createStatement();
@@ -293,12 +287,13 @@ catch(Exception ex){
 
   /**
    * This item creates new employee info.
+   *
    * @param actionEvent: to handle a mouse click.
    */
   public void handleCreateEmp(ActionEvent actionEvent) {
- String name = empName.getText();
- String pw = empPw.getText();
- Employee emp = new Employee(name, pw);
- empTextArea.appendText(String.valueOf(emp));
+    String name = empName.getText();
+    String pw = empPw.getText();
+    Employee emp = new Employee(name, pw);
+    empTextArea.appendText(String.valueOf(emp));
   }
 }

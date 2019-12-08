@@ -9,43 +9,26 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *This is the main file of the program.
- * @author: Nicholis Wright
+ * This is the main file of the program.
  *
- * */
-
+ * @author: Nicholis Wright
+ */
 public class Main extends Application {
-  /**
-   *This method creates the scene.
-   * @author: Nicholis Wright
-   *@param  primaryStage: sets scene.
-   * */
-
-  @Override
-  public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("production.fxml"));
-    primaryStage.setTitle("Production Line");
-    primaryStage.setScene(new Scene(root, 500, 450));
-    primaryStage.show();
-  }
-
-  /**
-   * @author: Nicholis Wright */
-
+  /** @author: Nicholis Wright */
   public static void main(String[] args) {
     // 1a
     for (ItemType it : ItemType.values()) {
       System.out.println(it + " " + it.getCodes());
     }
 
-    //TeST FOR REPL.IT CODE
+    // TeST FOR REPL.IT CODE
     // 1b
     Product product1 = new Widget("iPod", "Apple", ItemType.AUDIO);
     System.out.println(product1.toString());
     Product product2 = new Widget("Zune", "Microsoft", ItemType.AUDIO);
     System.out.println(product2.toString());
 
-    //TeST FOR REPL.IT CODE
+    // TeST FOR REPL.IT CODE
     // 2
     AudioPlayer newProduct = new AudioPlayer("M3U/PLS/WPL");
     System.out.println(newProduct);
@@ -54,12 +37,12 @@ public class Main extends Application {
     newProduct.next();
     newProduct.previous();
 
-    //TEST FOR REPL.IT CODE
+    // TEST FOR REPL.IT CODE
     // 3a
     Screen s1 = new Screen("600x400", 40, 22);
     System.out.println(s1);
 
-    //TEST FOR REPL.IT CODE
+    // TEST FOR REPL.IT CODE
     // 3b
     AudioPlayer newAudioProduct = new AudioPlayer("M3U/PLS/WPL");
     Screen newScreen = new Screen("720x480", 40, 22);
@@ -100,7 +83,7 @@ public class Main extends Application {
     pr.setProdDate(new Date());
     System.out.println(pr.getProdDate());
 
-    //TEST FOR REPL.IT CODE
+    // TEST FOR REPL.IT CODE
     // issue #5
     Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO);
 
@@ -115,5 +98,19 @@ public class Main extends Application {
     }
 
     launch(args);
+  }
+
+  /**
+   * This method creates the scene.
+   *
+   * @author: Nicholis Wright
+   * @param primaryStage: sets scene.
+   */
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("production.fxml"));
+    primaryStage.setTitle("Production Line");
+    primaryStage.setScene(new Scene(root, 500, 450));
+    primaryStage.show();
   }
 }

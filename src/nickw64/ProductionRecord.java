@@ -113,16 +113,6 @@ public class ProductionRecord extends Product {
   }
 
   /**
-   * Assign value to serialNumber.
-   *
-   * @author : Nicholis Wright
-   * @param s : passes in serialNumber for class var.
-   */
-  public void setSerialNum(String s) {
-    this.serialNumber = s;
-  }
-
-  /**
    * Return serialNumber.
    *
    * @author: Nicholis Wright
@@ -133,13 +123,13 @@ public class ProductionRecord extends Product {
   }
 
   /**
-   * Assign value to productID.
+   * Assign value to serialNumber.
    *
-   * @author: Nicholis Wright
-   * @param productID : assigns argument to productID var.
+   * @author : Nicholis Wright
+   * @param s : passes in serialNumber for class var.
    */
-  public void setProductID(int productID) {
-    this.productID = productID;
+  public void setSerialNum(String s) {
+    this.serialNumber = s;
   }
 
   /**
@@ -150,6 +140,16 @@ public class ProductionRecord extends Product {
    */
   public int getProductID() {
     return productID;
+  }
+
+  /**
+   * Assign value to productID.
+   *
+   * @author: Nicholis Wright
+   * @param productID : assigns argument to productID var.
+   */
+  public void setProductID(int productID) {
+    this.productID = productID;
   }
 
   /**
