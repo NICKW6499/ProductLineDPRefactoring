@@ -9,7 +9,8 @@ This is a production tracker program intended for use by a factory that produces
 JavaDocs in IDE.
 
 ## Diagrams
-![](myphoto.PNG)
+![](Database.PNG)
+![](ClassDiagram.PNG)
 
 
 ## Getting Started
@@ -35,7 +36,7 @@ Professor Scott Vanselow
 9/10/2019 This project started out as a GUI with no data base attached or CSS. 
 9/28/2019 The project now has a CSS file to style the GUI and a data base attached.
 11/9/2019 The project now has integreated table views and database functionality to record progress.
-
+12/4/2019 The project has custom serial numbers and populates tables from the database.
 
 ## Key Programming Concepts Utilized
 Key concepts I used in this project are establishing data bases with H2, creating a file path for said data base, inserting items into the data base using SQL and CSS to create a design for the GUI.
