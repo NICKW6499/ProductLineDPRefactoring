@@ -34,7 +34,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * toString method compiles an item statement.
    *
    * @author: Nicholis Wright
-   * @param: none
+   * @return: returns a string
    */
   public String toString() {
     return super.toString() + getScreen() + "\n" + "Monitor Type: " + getMonitorType();
@@ -44,7 +44,6 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * play method plays movie.
    *
    * @author: Nicholis Wright
-   * @param: none
    */
   public void play() {
     System.out.println("Playing movie");
@@ -54,7 +53,6 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * stop method stops movie.
    *
    * @author: Nicholis Wright
-   * @param: none
    */
   public void stop() {
     System.out.println("Stopping movie");
@@ -64,7 +62,6 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * previous method plays last movie
    *
    * @author: Nicholis Wright
-   * @param: none
    */
   public void previous() {
     System.out.println("Previous movie");
@@ -74,7 +71,6 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * next method plays next movie.
    *
    * @author: Nicholis Wright
-   * @param
    */
   public void next() {
     System.out.println("Next movie");

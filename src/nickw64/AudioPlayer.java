@@ -4,7 +4,6 @@ package nickw64;
  * This class constructs audioplayers.
  *
  * @author: Nicholis Wright
- * @param
  */
 public class AudioPlayer extends Product implements MultimediaControl {
 
@@ -110,7 +109,6 @@ public class AudioPlayer extends Product implements MultimediaControl {
    * toString method to compile an object statement.
    *
    * @author: Nicholis Wright
-   * @param
    */
   public String toString() {
     return super.toString()

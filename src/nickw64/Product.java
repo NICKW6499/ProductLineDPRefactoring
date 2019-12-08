@@ -146,7 +146,6 @@ class Widget extends Product {
    * * This Constructor builds a 4 param object and calls constructor of superClass.
    *
    * @author: Nicholis Wright
-   * @call super(name,manufacturer,type): call super constructor
    */
   Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);

@@ -77,7 +77,6 @@ public class ProductionRecord extends Product {
    * ToString method compiles info into a product statement.
    *
    * @author: Nicholis Wright
-   * @param: none
    */
   @Override
   public String toString() {
