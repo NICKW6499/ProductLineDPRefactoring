@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -30,11 +31,15 @@ public class Controller extends ProductionRecord {
 
   @FXML public Button addButton;
   @FXML public Button recordProductionButton;
+  @FXML public Button createEmp;
   @FXML private ComboBox<Integer> quantityCombo;
   @FXML private ChoiceBox choiceBox;
   @FXML private TextField txtName;
   @FXML private TextField txtMan;
+  @FXML private TextField empName;
+  @FXML private TextField empPw;
   @FXML private TextArea ProductionLog;
+  @FXML private TextArea empTextArea;
   @FXML private ObservableList<Product> productLine;
   @FXML private ListView<Product> produceView;
   @FXML private TableView<Product> productView;
@@ -43,27 +48,22 @@ public class Controller extends ProductionRecord {
   @FXML private TableColumn<?, ?> colProdType;
 
   /**
-  *@author: Nicholis Wright
-  *@param ActionEvent actionEvent: this param passes in the action taking place on the
-  product add button
-  * */
-
-  /**
   * This method calls the setupProductLineTable to insert items in the table
   * and also calls insertDB() to insert into database
   * @author: Nicholis Wright
   * */
-  public void handleProductAddButton() {
+  public void handleProductAddButton() throws SQLException {
     System.out.println("hopefully this works");
     setupProductLineTable();
     String prodName = txtName.getText();
     String prodMan = txtMan.getText();
     ItemType prodType = (ItemType) choiceBox.getValue();
     Product newProduct = new Product(prodName, prodMan, prodType);
-    ProductionRecord newProds = new ProductionRecord(newProduct, 1);
 
     ProductionLog.appendText(super.toString() + "\n");
     insertDB();
+    loadProductList();
+
   }
 
   /**
@@ -75,12 +75,12 @@ public class Controller extends ProductionRecord {
     Product newItem = produceView.getSelectionModel().getSelectedItem();
 
     for (int num = 1; num <= prodCount; num++) {
-      ProductionRecord newProds = new ProductionRecord(newItem, prodCount);
+      ProductionRecord newProds = new ProductionRecord(newItem, num);
 
       newProds.setProductID(getProductID() + 1);
       ProductionLog.appendText(newProds.toString() + "\n");
 
-      insertDB(newProds);
+      insertDB(newItem);
     }
   }
 
@@ -108,11 +108,20 @@ public class Controller extends ProductionRecord {
    *This method populates the combo box with decimal numbers 1-10
    * also sets up cell factory for observable list and tableview.
    * */
-  public void initialize() {
+  public void initialize() throws SQLException {
+
     productLine = FXCollections.observableArrayList();
+
+    setupProductLineTable();
+try{
     colProdName.setCellValueFactory(new PropertyValueFactory("Name"));
     colManName.setCellValueFactory(new PropertyValueFactory("Manufacturer"));
     colProdType.setCellValueFactory(new PropertyValueFactory("Type"));
+}
+catch(Exception ex){
+      System.out.println("Failed to establish table");
+}
+
 
     for (int i = 0; i <= 10; i++) {
       quantityCombo.getItems().add(i);
@@ -122,29 +131,37 @@ public class Controller extends ProductionRecord {
     for (ItemType it : ItemType.values()) {
       choiceBox.getItems().add(it);
     }
+    loadProductList();
   }
 
-  public void loadProductList()throws SQLException {
+  /**
+   * This method loads a list of products in the database.
+   * @author: Nicholis Wright
+   * @throws SQLException catches database errors
+   */
+  public void loadProductList() throws SQLException {
+
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
+
     Connection conn;
     Statement stmt;
+
     String sql = "SELECT * FROM PRODUCT";
-    conn = DriverManager.getConnection(dbUrl);
+    conn = DriverManager.getConnection(dbUrl, "","dbpw");
 
     // STEP 3: Execute a query
     stmt = conn.createStatement();
 
     ResultSet rs = stmt.executeQuery(sql);
-    while (rs.next()) {
+    while (rs.next()) {                                         //retrieves items from DB
       // these lines correspond to the database table columns
       String name = rs.getString(2);
       String manuf = rs.getString(4);
       String type = rs.getString(3);
       ItemType prodType= ItemType.AUDIO;
 
-      if( type.equals("AUDIO")){
-         prodType = ItemType.AUDIO;
+      if( type.equals("AUDIO")){              //if statements to set the type of object based on DB
       }
       else if (type.equals("VISUAL")){
         prodType = ItemType.VISUAL;
@@ -156,7 +173,6 @@ public class Controller extends ProductionRecord {
         prodType = ItemType.VISUAL_MOBILE;
       }
 
-
       // create object
       Product prodFromDB = new Product(name, manuf, prodType);
       // save to observable list
@@ -164,11 +180,11 @@ public class Controller extends ProductionRecord {
     }
   }
   /**
-   * method to insert new items into the database
+   * Method to insert new items into the database.
    * @author: Nicholis Wright
-   * @param:none
+   * @param newItem : this is the item passed in from the ProductionRecord(product, count) const.
    * */
-  public void insertDB(Product newItem) {
+  public void insertDB(Product newItem) {             //used to enter ProductionRecord Items looped
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
 
@@ -214,6 +230,11 @@ public class Controller extends ProductionRecord {
     }
   }
 
+
+  /**
+   * Method to insert new items into the database.
+   * @author: Nicholis Wright
+   * */
   public void insertDB() {
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
@@ -229,7 +250,7 @@ public class Controller extends ProductionRecord {
       PASS = prop.getProperty("Password");
     }
     catch (Exception ex){
-      System.out.println(ex);
+      System.out.println("failed to retrieve password");
     }
 
     try {
@@ -268,5 +289,16 @@ public class Controller extends ProductionRecord {
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * This item creates new employee info.
+   * @param actionEvent: to handle a mouse click.
+   */
+  public void handleCreateEmp(ActionEvent actionEvent) {
+ String name = empName.getText();
+ String pw = empPw.getText();
+ Employee emp = new Employee(name, pw);
+ empTextArea.appendText(String.valueOf(emp));
   }
 }

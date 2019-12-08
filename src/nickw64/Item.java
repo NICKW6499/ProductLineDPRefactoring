@@ -7,13 +7,13 @@ package nickw64;
 interface Item {
 
   /**
-   * Skeleton for getID method
+   * Skeleton for getID method.
    * @author: Nicholis Wright
    * */
   int getId();
 
   /**
-   * Skeleton method for setName method
+   * Skeleton method for setName method.
    * @author: Nicholis Wright
    * */
   void setName(String name);

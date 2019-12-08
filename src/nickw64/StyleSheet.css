@@ -2,8 +2,9 @@
   * @author: Nicholis Wright
   *This file is the css sheet to have a better design for the GUI.
   *All of these are needed for styling but give errors
-  * */
+ */
 
+/*noinspection CssUnusedSymbol*/
 .root {
   -fx-background-image: url("appBackground.jpg");
   -fx-font-family: "Agency FB";
@@ -12,6 +13,7 @@
 }
 
 /**noinspection ALL*/
+/*noinspection CssUnusedSymbol*/
 .button {
   -fx-background-color: linear-gradient(#BBD2C5, #536976);
   -fx-background-radius: 100;
@@ -21,6 +23,7 @@
 }
 
 
+/*noinspection CssUnusedSymbol*/
 .tab {
   -fx-background-color: linear-gradient(#BBD2C5, #536976);
   -fx-background-radius: 100;
@@ -31,11 +34,13 @@
 }
 
 
+/*noinspection CssUnusedSymbol*/
 .text-area {
   -fx-background-color: antiquewhite;
   -fx-background-radius: 0;
 }
 
+/*noinspection CssUnusedSymbol*/
 .tab-pane > .tab-header-area > .tab-header-background {
   -fx-background-color: linear-gradient(#BBD2C5, #536976);
 }

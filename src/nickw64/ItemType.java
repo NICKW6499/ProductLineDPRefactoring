@@ -23,8 +23,8 @@ public enum ItemType {
 
   /**
    * getCodes method returns item codes.
-   * @author: Nicholis Wright
-   * @return codes: represents item code
+   * @author : Nicholis Wright
+   * @return codes : represents item code.
    * */
   public String getCodes() {
     return this.codes;

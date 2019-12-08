@@ -5,7 +5,7 @@ package nickw64;
  * */
 
 public class Product implements Item {
-  private int id;
+  public int id;
   private ItemType type;
   private String manufacturer;
   private String name;
@@ -13,7 +13,6 @@ public class Product implements Item {
   /***
    * Default constructor for Product
    * @author: Nicholis Wright
-   *@param
    * */
   Product() {
     setId(1);

@@ -24,7 +24,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
   MoviePlayer(Screen screen) {
     super("DBPOWER MK101", "OracleProduction", ItemType.VISUAL);
     setScreen(screen);
-    setMonitorType(MonitorType.LCD);
+    setMonitorType();
   }
 
   /**
@@ -102,10 +102,8 @@ public class MoviePlayer extends Product implements MultimediaControl {
 
   /**
    * This sets a passed in value to monitorType
-   * @author: Nicholis Wright
-   * @param  monitorType: type of monitor
-   * */
-  private void setMonitorType(MonitorType monitorType) {
-    this.monitorType = monitorType;
+   * @author: Nicholis Wright */
+  private void setMonitorType() {
+    this.monitorType = MonitorType.LCD;
   }
 }
