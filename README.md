@@ -6,7 +6,7 @@ This is a production tracker program intended for use by a factory that produces
 ![](ezgif.com-gif-maker.gif)
 
 ## Documentation
-JavaDocs in IDE.
+https://nickw6499.github.io/ProductLine/
 
 ## Diagrams
 ![](Database.PNG)
