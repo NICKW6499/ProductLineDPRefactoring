@@ -24,7 +24,8 @@
     GridPane.valignment="CENTER" tabClosingPolicy="UNAVAILABLE">
     <Tab text="Product Line">
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="473.0">
-        <Button AnchorPane.bottomAnchor="206.2" AnchorPane.rightAnchor="183.0" layoutX="183.0" layoutY="117.0"
+        <Button AnchorPane.bottomAnchor="206.2" AnchorPane.rightAnchor="183.0" layoutX="183.0"
+          layoutY="117.0"
           mnemonicParsing="false" onAction="#handleProductAddButton" text="Add Product"
           fx:id="addButton"/>
         <GridPane layoutX="81.0" layoutY="14.0" prefHeight="90.0" prefWidth="297.0">
@@ -33,7 +34,8 @@
           <Label GridPane.rowIndex="2" text="Manufacturer" textFill="#f8f8f8"/>
           <Label GridPane.rowIndex="3" text="Item Type" textFill="WHITE"/>
           <Label GridPane.rowIndex="1" text="Product Name" textFill="#fffefe"/>
-          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="30.0" prefWidth="150.0"
+          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="30.0"
+            prefWidth="150.0"
             fx:id="txtName"/>
           <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="txtMan"/>
           <columnConstraints>
@@ -80,7 +82,8 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <Button layoutX="345.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleCreateEmp"
+            <Button layoutX="345.0" layoutY="135.0" mnemonicParsing="false"
+              onAction="#handleCreateEmp"
               text="Create Employee" fx:id="createEmp">
               <font>
                 <Font size="11.0"/>

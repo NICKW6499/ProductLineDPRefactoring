@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProductLine:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProductLine_jar</output-path>
+    <root id="archive" name="ProductLine.jar">
+      <element id="module-output" name="ProductLine" />
+      <element id="extracted-dir" path="C:/Program Files (x86)/H2/bin/h2-1.4.199.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/res/h2-1.4.199.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/plugins/android/lib/jdk11/layoutlib.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
