@@ -39,4 +39,4 @@ Professor Scott Vanselow
 12/4/2019 The project has custom serial numbers and populates tables from the database.
 
 ## Key Programming Concepts Utilized
-Key concepts I used in this project are establishing data bases with H2, creating a file path for said data base, inserting items into the data base using SQL and CSS to create a design for the GUI.
+Key concepts I used in this project are establishing databases with H2, creating a file path for said data base, inserting items into the database using SQL and CSS to create a design for the GUI.
