@@ -1,12 +1,11 @@
 package nickw64;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -205,20 +204,14 @@ public class Controller extends ProductionRecord {
       // STEP 3: Execute a query
       stmt = conn.createStatement();
 
-      String prodName = newItem.getName();
-      String prodMan = newItem.getManufacturer();
-      ItemType prodType = newItem.getType();
-      Widget newProduct = new Widget(prodName, prodMan, prodType);
-
-      // this inserts the name, manufacturer, and type into product of the database
       String sql =
           "INSERT INTO PRODUCT(NAME,MANUFACTURER, TYPE) "
               + "VALUES (  '"
-              + newProduct.getName()
+              + newItem.getName()
               + "' ,   '"
-              + newProduct.getManufacturer()
+              + newItem.getManufacturer()
               + "' , '"
-              + prodType
+              + newItem.getType()
               + "')";
       System.out.println("sql is " + sql);
       stmt.executeUpdate(sql);
@@ -232,13 +225,20 @@ public class Controller extends ProductionRecord {
       e.printStackTrace();
     }
   }
-
+public boolean isBlank(){
+  ItemType prodType = (ItemType) choiceBox.getValue();
+  String blankName = "";
+  boolean blank = false;
+    if(txtName.getText().equals(blankName) || txtMan.getText().equals(blankName) || prodType == null)
+      blank = true;
+  return blank;
+}
  public void createNewProduct(){
    String prodName = txtName.getText();
    String prodMan = txtMan.getText();
    ItemType prodType = (ItemType) choiceBox.getValue();
-   String blankName = "";
-   if (txtName.getText().equals(blankName) || txtMan.getText().equals(blankName) || prodType == null) {
+
+   if (isBlank()) {
      System.out.println("Please fill in the item name, manufacture and type!");
 
    } else {
