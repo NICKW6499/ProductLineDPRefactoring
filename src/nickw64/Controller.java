@@ -55,23 +55,11 @@ public class Controller extends ProductionRecord {
    * @author: Nicholis Wright
    */
   public void handleProductAddButton() throws SQLException {
-    System.out.println("hopefully this works");
     setupProductLineTable();
+    createNewProduct();
 
-    String prodName = txtName.getText();
-    String prodMan = txtMan.getText();
-    ItemType prodType = (ItemType) choiceBox.getValue();
-    String test = "";
-    if (txtName.getText().equals(test) || txtMan.getText().equals(test) || prodType == null) {
-      System.out.println("Please fill in the item name, manufacture and type!");
 
-    } else {
-      Product newProduct = new Product(prodName, prodMan, prodType);
 
-      ProductionLog.appendText(super.toString() + "\n");
-
-      insertDB(newProduct);
-    }
   }
 
   /** @author: Nicholis Wright */
@@ -106,8 +94,6 @@ public class Controller extends ProductionRecord {
     String prodName = txtName.getText();
     String prodMan = txtMan.getText();
     ItemType prodType = (ItemType) choiceBox.getValue();
-
-    // Product mediaProduct = new Product(prodName,prodMan,prodType);
 
     produceView.getItems().add(new Product(prodName, prodMan, prodType));
 
@@ -247,64 +233,21 @@ public class Controller extends ProductionRecord {
     }
   }
 
-  /**
-   * Method to insert new items into the database.
-   *
-   * @author: Nicholis Wright
-   */
-  public void insertDB() {
-    final String jdbc_driver = "org.h2.Driver";
-    final String dbUrl = "jdbc:h2:./res/Production";
-    final String USER = "";
-    String PASS = "";
-    // data base credentials
-    Connection conn;
-    Statement stmt;
+ public void createNewProduct(){
+   String prodName = txtName.getText();
+   String prodMan = txtMan.getText();
+   ItemType prodType = (ItemType) choiceBox.getValue();
+   String blankName = "";
+   if (txtName.getText().equals(blankName) || txtMan.getText().equals(blankName) || prodType == null) {
+     System.out.println("Please fill in the item name, manufacture and type!");
 
-    try {
-      Properties prop = new Properties();
-      prop.load(new FileInputStream("res/properties"));
-      PASS = prop.getProperty("Password");
-    } catch (Exception ex) {
-      System.out.println("failed to retrieve password");
-    }
+   } else {
+     Product newProduct = new Product(prodName, prodMan, prodType);
 
-    try {
-      // STEP 1: Register JDBC driver
-      Class.forName(jdbc_driver);
+     ProductionLog.appendText(super.toString() + "\n");
 
-      // STEP 2: Open a connection
-      conn = DriverManager.getConnection(dbUrl, "", PASS);
-
-      // STEP 3: Execute a query
-      stmt = conn.createStatement();
-
-      String prodName = txtName.getText();
-      String prodMan = txtMan.getText();
-      ItemType prodType = (ItemType) choiceBox.getValue();
-      Widget newProduct = new Widget(prodName, prodMan, prodType);
-
-      // this inserts the name, manufacturer, and type into product of the database
-      String sql =
-          "INSERT INTO PRODUCT(NAME,MANUFACTURER, TYPE) "
-              + "VALUES (  '"
-              + newProduct.getName()
-              + "' ,   '"
-              + newProduct.getManufacturer()
-              + "' , '"
-              + prodType
-              + "')";
-      System.out.println("sql is " + sql);
-      stmt.executeUpdate(sql);
-
-      // STEP 4: Clean-up environment
-      stmt.close();
-      conn.close();
-
-      // catches/handles exception errors
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    }
+     insertDB(newProduct);
+   }
   }
 
   /**
