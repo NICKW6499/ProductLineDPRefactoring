@@ -53,7 +53,7 @@ public class ProductionRecord extends Product {
       try {
         this.serialNumber =
             product.getManufacturer().substring(0, 3) + product.getType().getCodes() + idNumber;
-      } catch (StringIndexOutOfBoundsException e) {
+      } catch (Exception e) {
         System.out.println("Invalid object");
       }
     }

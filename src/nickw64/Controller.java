@@ -89,15 +89,11 @@ public class Controller extends ProductionRecord {
    * @param
    */
   private void setupProductLineTable() {
-
     String prodName = txtName.getText();
     String prodMan = txtMan.getText();
     ItemType prodType = (ItemType) choiceBox.getValue();
+    buildTable(prodName, prodMan, prodType);
 
-    produceView.getItems().add(new Product(prodName, prodMan, prodType));
-
-    productLine.add(new Product(prodName, prodMan, prodType));
-    productView.setItems(productLine);
   }
 
   /**
@@ -149,28 +145,21 @@ public class Controller extends ProductionRecord {
     stmt = conn.createStatement();
 
     ResultSet rs = stmt.executeQuery(sql);
-    while (rs.next()) { // retrieves items from DB
-      // these lines correspond to the database table columns
+    while (rs.next()) {
+
       String name = rs.getString(2);
       String manuf = rs.getString(4);
       String type = rs.getString(3);
-      ItemType prodType = ItemType.AUDIO;
-
-      if (type.equals("AUDIO")) { // if statements to set the type of object based on DB
-      } else if (type.equals("VISUAL")) {
-        prodType = ItemType.VISUAL;
-      } else if (type.equals("AUDIO_MOBILE")) {
-        prodType = ItemType.AUDIO_MOBILE;
-      } else if (type.equals("VIDEO_MOBILE")) {
-        prodType = ItemType.VISUAL_MOBILE;
-      }
+      ItemType prodType = determineType(type);
 
       // create object
       Product prodFromDB = new Product(name, manuf, prodType);
       ProductionRecord newRec = new ProductionRecord(prodFromDB, 1);
+
       // save to observable list
       productLine.add(prodFromDB);
       produceView.getItems().add(new Product(name, manuf, prodType));
+
       try {
         ProductionLog.appendText(String.valueOf(newRec));
       } catch (StringIndexOutOfBoundsException e) {
@@ -179,6 +168,18 @@ public class Controller extends ProductionRecord {
     }
     conn.close();
     stmt.close();
+  }
+
+  /**
+   * This item creates new employee info.
+   *
+   * @param actionEvent: to handle a mouse click.
+   */
+  public void handleCreateEmp(ActionEvent actionEvent) {
+    String name = empName.getText();
+    String pw = empPw.getText();
+    Employee emp = new Employee(name, pw);
+    empTextArea.appendText(String.valueOf(emp));
   }
   /**
    * Method to insert new items into the database.
@@ -190,7 +191,6 @@ public class Controller extends ProductionRecord {
     final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
 
-    // data base credentials
     Connection conn;
     Statement stmt;
 
@@ -225,6 +225,25 @@ public class Controller extends ProductionRecord {
       e.printStackTrace();
     }
   }
+
+  private void buildTable(String prodName, String prodMan, ItemType prodType){
+    produceView.getItems().add(new Product(prodName, prodMan, prodType));
+    productLine.add(new Product(prodName, prodMan, prodType));
+    productView.setItems(productLine);
+  }
+
+  public ItemType determineType(String type){
+    ItemType prodType = null;
+    if (type.equals("AUDIO")) { // if statements to set the type of object based on DB
+    } else if (type.equals("VISUAL")) {
+      prodType = ItemType.VISUAL;
+    } else if (type.equals("AUDIO_MOBILE")) {
+      prodType = ItemType.AUDIO_MOBILE;
+    } else if (type.equals("VIDEO_MOBILE")) {
+      prodType = ItemType.VISUAL_MOBILE;
+    }
+    return prodType;
+  }
 public boolean isBlank(){
   ItemType prodType = (ItemType) choiceBox.getValue();
   String blankName = "";
@@ -250,15 +269,4 @@ public boolean isBlank(){
    }
   }
 
-  /**
-   * This item creates new employee info.
-   *
-   * @param actionEvent: to handle a mouse click.
-   */
-  public void handleCreateEmp(ActionEvent actionEvent) {
-    String name = empName.getText();
-    String pw = empPw.getText();
-    Employee emp = new Employee(name, pw);
-    empTextArea.appendText(String.valueOf(emp));
-  }
 }
