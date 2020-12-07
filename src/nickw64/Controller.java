@@ -116,8 +116,10 @@ public class Controller extends ProductionRecord {
     for (int i = 1; i <= 10; i++) {
       quantityCombo.getItems().add(i);
     }
+
     quantityCombo.getSelectionModel().selectFirst();
     quantityCombo.setEditable(true);
+
     for (ItemType it : ItemType.values()) {
       choiceBox.getItems().add(it);
     }
@@ -132,7 +134,6 @@ public class Controller extends ProductionRecord {
    */
   public void loadProductList() throws SQLException {
 
-    final String jdbc_driver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./res/Production";
 
     Connection conn;
