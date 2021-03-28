@@ -1,4 +1,4 @@
-# ProductLine
+# ProductLine Revision for Design Patterns and Refactoring Class
 
 This is a production tracker program intended for use by a factory that produces media players. At the time of writing, I am a Junior in college at Florida Gulf Coast University. This program is specifically for an Object Oriented Programming assignment, and is a semester long project that will continue to receive updates as time goes on.
 
